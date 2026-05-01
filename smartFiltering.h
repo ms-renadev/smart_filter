@@ -17,13 +17,14 @@ struct Node {
         next = NULL;
     }
 };
-
+Node * insertHead(Node* &headPtr, std::string word);
 class SmartFilter {
 private:
     Node * headPtr;
     Node * tailPtr;
     size_t totalSpamCount;     
     size_t totalHamCount;
+    size_t size;
     std::string lowerCaseAll(std::string rawWord);
 public:
     SmartFilter();
