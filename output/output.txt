@@ -1,3 +1,3 @@
-Spam count: 149
-Ham Count: 0
-Total Words: 105
+Spam count: 7411746
+Ham Count: 7706549
+Total Words: 15118295

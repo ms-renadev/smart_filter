@@ -3,6 +3,7 @@
 
 // #include"smartFiltering.h"
 #include"smartFiltering.h"
+#include <chrono>
 //processdata path
 
 // int main(){
@@ -16,8 +17,9 @@
 
 int main() {
     SmartFilter myFilter;
-
-    std::ifstream testIndex("../trec06p/ham25/experiment1");
+    //1. let's record the time started:
+    auto start = std::chrono::high_resolution_clock::now();
+    std::ifstream testIndex("../trec06p/full/index");
     if (!testIndex.is_open()) {
         std::cout << "Error: File system not found.\n";
         return 1;
@@ -50,7 +52,15 @@ int main() {
  
     myFilter.saveToFile("output.txt");
 
- 
+    //2. then end time niya
+    auto end = std::chrono::high_resolution_clock::now();
 
+    //3. last na calc run time
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+
+    std::cout << "\n--- Performance Statistics ---" << std::endl;
+    std::cout << "Total runtime: " << duration.count() << " ms (" 
+              << duration.count() / 1000.0 << " seconds)" << std::endl;
+    std::cout << "Unique words processed: " << myFilter.totalWords() << std::endl;
     return 0; 
 }
