@@ -8,12 +8,12 @@
 #include <cassert>
 #include <cstdlib>
 
-struct Node {
+struct BTNode {
     std::string word;
-    Node * left, * right;
+    BTNode * left, * right;
     int height;
 
-    Node(std::string w){
+    BTNode(std::string w){
         word = w;
         left = NULL;
         right = NULL;
@@ -23,18 +23,30 @@ struct Node {
 
 class AVLFilter {
 private:
-    Node * root;
-    int getHeight(Node* n);    
-    int getBalance(Node* n);   
-    
-    Node * rotateRight(Node* y);  
-    Node * rotateLeft(Node* x);  
-
-    Node * insert(Node * node, std::string word, std::string label);
-    void inOrderSave(Node * node, std::ofstream& file); 
+    BTNode * root;
+    size_t totalSpamCount;     
+    size_t totalHamCount;
+    size_t size;
 
 public:
     AVLFilter();
+
+    int getHeight(BTNode * n);    
+    int getBalance(BTNode * n);  
+    
+    size_t getTotalSpam() const;
+    size_t getTotalHam() const;
+    size_t getSize() const;
+    size_t getTotalUniqueWords();
+
+    BTNode * rotateRight(BTNode* y);  
+    BTNode * rotateLeft(BTNode* x);  
+
+    std::string lowerCaseAll(std::string rawWord);
+    bool searchDuplicate(BTNode * node, std::string word);
+    BTNode * insert(BTNode * node, std::string rawWord);
+    void inOrderSave(BTNode * node, std::ofstream& file); 
+
     void addWord(std::string rawWord, std::string label);
     void saveToFile(std::string filename);
 };

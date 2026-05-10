@@ -1,6 +1,0 @@
---- SmartFilter Statistics ---
-Total Spam Words: 3
-Total Ham Words: 0
-Total Unique Words (U): 2
-------------------------------
-

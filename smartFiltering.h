@@ -10,10 +10,10 @@
 #include <cctype>
 
 struct Node {
-    std::string word;
+    std::string updatedWord;
     Node * next;
     Node(std::string _word){
-        word = _word;
+        updatedWord = _word;
         next = NULL;
     }
 };
@@ -29,16 +29,16 @@ private:
 public:
     SmartFilter();
     ~SmartFilter();
-    //getters - size, headptr, tail
+
     Node * get_headPtr() const;
     Node * get_tailPtr() const;
     size_t getTotalSpam() const;
     size_t getTotalHam() const;
-    size_t totalWords();
+    size_t getSize() const;
    
     void addWord(std::string rawWord, std::string label);
-    void displayResults();//debug
     void saveToFile(std::string filename);
+    size_t getTotalUniqueWords();
 };
 #include "smartFiltering.cpp"
 #endif

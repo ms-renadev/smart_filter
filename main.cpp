@@ -2,22 +2,13 @@
 #include<fstream>
 #include"smartFiltering.h"
 #include <chrono>
-//processdata path
-
-// int main(){
-//  load map file
-//      after reading one line
-            // go to the file
-            // process and get the words
-            // if it has duplicate words, wag mo ba i add sa list
-// }
 
 int main() {
     const int RUNS = 3;
     long long totalDuration = 0;
-    SmartFilter myFilter;
-    for (int run = 1; run <= RUNS; run++) {
-
+    
+    for (int run = 1; run <= 1; run++) {
+        SmartFilter myFilter;
         std::cout << "\nRUNTIME NO. " << run << " \n\n";
         //1. let's record the time started:
         auto start = std::chrono::high_resolution_clock::now();
@@ -66,8 +57,9 @@ int main() {
                 << duration.count() / 1000.0 << " seconds or " << duration.count()/(1000.0 * 60.0 * 60.0) 
                 << " hours )" << std::endl;
 
-        std::cout << "Unique words processed: " << myFilter.totalWords() << std::endl;
-        std::cout << "-------------------------------------------------------\n";
+        std::cout << "Unique words processed: " << myFilter.getTotalUniqueWords()<< std::endl;
+        std::cout << "Number of words in email is " << myFilter.getSize() << std::endl;
+        std::cout << "\n-------------------------------------------------------\n";
     }
     //start at 4:13 AM
     double average = (totalDuration * 1.0) / RUNS;
